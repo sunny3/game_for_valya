@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Дим Димыч хочет в туалет</title>
+<meta name="description" content="Страшилка-квест про злых фиксиков. Идея и сюжет — Валя.">
+<style>
+  :root { --bg: #07050d; --btn: #5b46c9; --btn-hi: #7a64ff; --fg: #f4f0ff; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); overflow: hidden;
+    font-family: "Trebuchet MS", system-ui, sans-serif; touch-action: none; user-select: none;
+    -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }
+  #wrap { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  canvas { display: block; image-rendering: auto; }
+  #menu { position: fixed; left: 50%; bottom: 14%; transform: translateX(-50%); display: flex;
+    flex-direction: column; gap: 10px; align-items: center; }
+  #menu[hidden] { display: none; }
+  #menu button { font: bold 20px "Trebuchet MS", system-ui, sans-serif; color: var(--fg); background: var(--btn);
+    border: 2px solid #b6a8ff; border-radius: 14px; padding: 10px 28px; min-width: 220px; cursor: pointer;
+    box-shadow: 0 0 18px #5b46c980; }
+  #menu button:hover { background: var(--btn-hi); }
+  #menu button.sec { font-size: 15px; background: #2a2150; min-width: 0; padding: 7px 18px; }
+  #mute { position: fixed; top: 8px; right: 10px; font-size: 22px; background: #0008; color: #fff;
+    border: 0; border-radius: 10px; padding: 4px 8px; cursor: pointer; z-index: 5; }
+  .touch { display: none; }
+  body.touch-on .touch { display: block; }
+  body.portrait #wrap { bottom: 190px; }
+  body.portrait #joy { left: 28px; bottom: calc(30px + env(safe-area-inset-bottom)); }
+  body.portrait #act { right: 32px; bottom: calc(46px + env(safe-area-inset-bottom)); }
+  body.portrait #menu { bottom: 230px; }
+  #hint { font-size: 14px; color: #cfc8ef; text-align: center; }
+  button { touch-action: manipulation; }
+  #joy { position: fixed; left: 18px; bottom: 18px; width: 120px; height: 120px; border-radius: 50%;
+    background: #ffffff14; border: 2px solid #ffffff30; }
+  #knob { position: absolute; left: 35px; top: 35px; width: 50px; height: 50px; border-radius: 50%;
+    background: #ffffff55; pointer-events: none; }
+  #act { position: fixed; right: 22px; bottom: 34px; width: 84px; height: 84px; border-radius: 50%;
+    background: #ffcc3355; border: 2px solid #ffcc33aa; color: #fff; font-size: 34px; }
+</style>
+</head>
+<body>
+<div id="wrap"><canvas id="c"></canvas></div>
+<div id="menu" hidden>
+  <button id="cont">Продолжить</button>
+  <button id="play">Играть</button>
+  <div id="hint"></div>
+</div>
+<button id="mute" title="Звук (M)">🔊</button>
+<div id="joy" class="touch"><div id="knob"></div></div>
+<button id="act" class="touch">✋</button>
+<script src="game.js"></script>
+</body>
+</html>
